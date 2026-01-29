@@ -1,11 +1,22 @@
 #include "Level.h"
+#include "Framework/GameObject.h"
+#include "Framework/Animation.h"
 
-Level::Level(sf::RenderWindow& hwnd, Input& in) :
-	BaseLevel(hwnd, in)
+Level::Level(sf::RenderWindow& hwnd, Input& in) : BaseLevel(hwnd, in)
 {
 	m_snake.setRadius(20);
 	m_snake.setPosition({ 50, 50 });
 	m_snake.setFillColor(sf::Color::Green);
+
+	
+
+	if (!m_sheepSprites.loadFromFile("gfx/sheep_sheet.png")) { std::cerr << "gfx/sheep_sheet.png not found\n"; }
+	m_sheep.setTexture(&m_sheepSprites, true);
+	m_sheep.setTextureRect(sf::IntRect({ 0,0 }, { 64,64 }));
+
+	m_sheep.setSize({64,64});
+	
+	
 }
 
 // handle user input
@@ -109,6 +120,7 @@ void Level::render()
 {
 	beginDraw();
 	m_window.draw(m_snake);
+	m_window.draw(m_sheep);
 	endDraw();
 }
 
