@@ -11,12 +11,12 @@ public:
     void update(float dt) override;
     void handleInput(float dt) override;
 
-    Animation m_walkDown;
-    Animation* m_currentAnimation;
+
 
 private:
     // Sheep member variables here
-
+    Animation m_walkDown;
+    Animation* m_currentAnimation;
  
 
 };
